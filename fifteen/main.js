@@ -1,6 +1,6 @@
 const Phaser = window.Phaser;
 
-const cellSize = 70;
+const cellSize = 80;
 const borderSize = 4;
 const Fifteen = {
 	Game: function(game) {
@@ -55,8 +55,10 @@ Fifteen.Game.prototype = {
 
 	create_chips: function() {
 		let graphics = this.game.add.graphics(0, 0);
-		graphics.beginFill(0xBBBB00, 1);
+		graphics.beginFill(0xEEEE00, 0.4);
 		graphics.drawRect(0, 0, cellSize, cellSize);
+		graphics.beginFill(0xDDDD00, 1);
+		graphics.drawRect(3, 3, cellSize - 6, cellSize - 6);
 		graphics.endFill();
 		graphics.visible = false;
 		let chip_texture = graphics.generateTexture();
@@ -73,8 +75,10 @@ Fifteen.Game.prototype = {
 				chip.anchor.set(0);
 				chip.cell = {x: i, y: j};
 				chip.index = this.position_index(i, j);
-				text = this.game.add.text(chip.width / 2, chip.height / 2 + 3, chip.index, { font: "bold 48px Arial" });
+				text = this.game.add.text(chip.width / 2, chip.height / 2 + 3, chip.index, { font: "bold 40px Arial", fill: "#000" });
 				text.anchor.set(0.5);
+				// text.stroke = '#000';
+				// text.strokeThickness = 5;
 				chip.addChild(text);
 				chip.inputEnabled = true;
 				chip.input.useHandCursor = true;
@@ -117,7 +121,7 @@ Fifteen.Game.prototype = {
 		else {
 			let tween = this.game.add.tween(chip.position).to({ x: x, y: y }, 200, Phaser.Easing.Bounce.Out).start();
 			tween.onComplete.addOnce(() => {
-				navigator.vibrate(50);
+				navigator.vibrate(80);
 				let win = true;
 				this.chips.forEachAlive(e => {
 					if (win) win = e.index === this.position_index(e.cell.x, e.cell.y);
