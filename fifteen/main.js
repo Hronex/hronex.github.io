@@ -54,7 +54,7 @@ Fifteen.Game.prototype = {
 	create_chips: function() {
 		let graphics = this.game.add.graphics(0, 0);
 		graphics.beginFill(0xBBBB00, 1);
-		graphics.drawRect(0, 0, 96, 96);
+		graphics.drawRect(0, 0, 90, 90);
 		graphics.endFill();
 		graphics.visible = false;
 		let chip_texture = graphics.generateTexture();
@@ -109,8 +109,8 @@ Fifteen.Game.prototype = {
 			chip.cell = Fifteen.null_cell;
 			Fifteen.null_cell = tmp;
 		}
-		let x = 4 + chip.cell.x * 96 + (chip.cell.x * 4),
-			y = 4 + chip.cell.y * 96 + (chip.cell.y * 4);
+		let x = 4 + chip.cell.x * 90 + (chip.cell.x * 4),
+			y = 4 + chip.cell.y * 90 + (chip.cell.y * 4);
 		if (fast === 1) chip.position = new Phaser.Point(x, y);
 		else {
 			let tween = this.game.add.tween(chip.position).to({ x: x, y: y }, 200, Phaser.Easing.Bounce.Out).start();
@@ -143,7 +143,7 @@ const config = {
 	}
 };
 // const fifteen_game = new Phaser.Game(config);
-const fifteen_game = new Phaser.Game(404, 404, Phaser.AUTO, 'main', null, false, true);
+const fifteen_game = new Phaser.Game(380, 380, Phaser.AUTO, 'main', null, false, true);
 fifteen_game.state.add('Game', Fifteen.Game, true);
 fifteen_game.state.add('Win', Fifteen.Win, false);
 fifteen_game.state.start('Game', false, false);
