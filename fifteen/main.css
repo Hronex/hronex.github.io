@@ -1,0 +1,23 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #fffaed;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 48px;
+}
+
+h2 {
+    margin: 0 0 50px 0;
+    color: #777;
+}
