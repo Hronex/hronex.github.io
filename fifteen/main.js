@@ -115,6 +115,7 @@ Fifteen.Game.prototype = {
 		else {
 			let tween = this.game.add.tween(chip.position).to({ x: x, y: y }, 200, Phaser.Easing.Bounce.Out).start();
 			tween.onComplete.addOnce(() => {
+				navigator.vibrate(50)
 				let win = true;
 				this.chips.forEachAlive(e => {
 					if (win) win = e.index === this.position_index(e.cell.x, e.cell.y);
